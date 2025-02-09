@@ -1,5 +1,4 @@
-import random 
-import libreria_dadi as dadi
+import random
 
 nomi = ["Drakar", "Lirael", "Thalas", "Eldorin", "Lyndra", "Kaelith", "Sylas", "Faelan", "Mirabelle", "Zephyr", "Isolde", "Thorn", "Elysia", "Varian", "Aeris", "Nerys", "Gwynn", "Eldira", "Soren", "Lirion"]
 cognomi = ["Stoneforge", "Moonshadow", "Starwhisper", "Thunderbeard", "Fireheart", "Ravenwing", "Icebane", "Stormrider", "Swiftfoot", "Dragonflame", "Shadowcloak", "Ironhammer", "Frostbeard", "Silverleaf", "Goldenshield", "Windrider", "Hawkseye", "Deepstone", "Steelheart", "Oakenshield"]
@@ -42,7 +41,13 @@ def main_loop(giocatore1: list[any], giocatore2: list[any]) -> None:
         turni_trascorsi += 1
         print(f"Turno: {turni_trascorsi}")
         attacco(giocatore1, giocatore2)
-        attacco(giocatore2, giocatore1)    
+        if giocatore2[2] <= 0:
+            print(f"Il vincitore è: {ottieni_nome_cognome(giocatore1)}!")
+            break
+        attacco(giocatore2, giocatore1)
+        if giocatore1[2] <= 0:
+            print(f"Il vincitore è: {ottieni_nome_cognome(giocatore2)}!")
+            break
 
 def main():
     giocatore1 = crea_giocatore("6d6")
@@ -50,5 +55,3 @@ def main():
     main_loop(giocatore1, giocatore2)
 
 main()
-
-
